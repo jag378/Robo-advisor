@@ -43,7 +43,6 @@ for stock in stocks_list:
 #Making the Data More User-Friendly
 
 daily_prices = parsed_response["Time Series (Daily)"]
-print(daily_prices)
 print(type(daily_prices))
 
 #Dates Analysis
@@ -54,3 +53,21 @@ for date in daily_prices:
     dates.append(date)
 
 print(dates)
+
+#Pricing Data
+
+pricing_data = []
+
+for date in dates:
+    prices = {"Time": date,
+            "Open": float(daily_prices[date]['1. open']),    #was getting errors later in program, so had to convert values to floats
+            "High": float(daily_prices[date]['2. high']),
+            "Low": float(daily_prices[date]['3. low']),
+            "Close": float(daily_prices[date]['4. close']),
+            "Volume": float(daily_prices[date]['5. volume'])  
+    }
+
+    pricing_data.append(prices)
+
+print(pricing_data)
+print(type(pricing_data))
