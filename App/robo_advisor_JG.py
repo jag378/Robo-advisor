@@ -22,8 +22,11 @@ stocks_list = []
 
 while stocks_counted < number_of_stocks:
     stock_ticker = input("Please input a public company's stock ticker here: ")
-    stocks_counted = stocks_counted + 1
-    stocks_list.append(stock_ticker)
+    if len(stock_ticker) > 4:
+        print("Oops! That isn't a valid stock symbol. Please input the stock's 3-4 digit ticker next time")
+    else:
+        stocks_counted = stocks_counted + 1
+        stocks_list.append(stock_ticker)
 
 print(stocks_list)
 
