@@ -43,14 +43,16 @@ for stock in stocks_list:
         company_data = parsed_response["Meta Data"]
         print(company_data)
 
+        daily_prices = parsed_response["Time Series (Daily)"]
+        print(type(daily_prices))
+
     except KeyError:
         print("\n")
         print("Sorry! It appears " + stock +" doesn't correspond to a company!")
 
 #Making the Data More User-Friendly
 
-daily_prices = parsed_response["Time Series (Daily)"]
-print(type(daily_prices))
+
 
 #Dates Analysis
 
