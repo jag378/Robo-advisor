@@ -39,3 +39,9 @@ for stock in stocks_list:
 
     company_data = parsed_response["Meta Data"]
     print(company_data)
+
+#Making the Data More User-Friendly
+
+daily_prices = parsed_response["Time Series (Daily)"]
+print(daily_prices)
+print(type(daily_prices))
