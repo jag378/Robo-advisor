@@ -14,3 +14,6 @@ print("Hello World")
 load_dotenv()
 
 my_api = os.environ.get("ALPHAVANTAGE_API_KEY")
+
+number_of_stocks = eval(input("How many stocks would you like data on?"))
+
