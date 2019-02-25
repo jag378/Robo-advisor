@@ -60,7 +60,7 @@ pricing_data = []
 
 for date in dates:
     prices = {"Time": date,
-            "Open": float(daily_prices[date]['1. open']),    #was getting errors later in program, so had to convert values to floats
+            "Open": float(daily_prices[date]['1. open']),    
             "High": float(daily_prices[date]['2. high']),
             "Low": float(daily_prices[date]['3. low']),
             "Close": float(daily_prices[date]['4. close']),
@@ -71,3 +71,14 @@ for date in dates:
 
 print(pricing_data)
 print(type(pricing_data))
+
+#Save to CSV
+
+csv_filepath = os.path.join(os.path.dirname(__file__), "..", "data", "prices.csv")
+csv_headers = ["Time", "Open", "High", "Low", "Close", "Volume"]
+
+with open(csv_filepath, "w") as csv_file:
+    writer = csv.DictWriter(csv_file, fieldnames=csv_headers)
+    writer.writeheader()
+    for prices in pricing_data:
+        writer.writerow(prices)
