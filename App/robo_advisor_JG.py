@@ -111,6 +111,17 @@ for stock in stocks_list:
         recent_low_form = dollar_format(recent_low)
         print(stock + "'s Recent Min Low: " + recent_low_form)
 
+        #Stock Recommendation Data
+
+        daily_closes = []
+        for prices in pricing_data:
+            daily_closes.append(prices["Close"])
+        close_sum = sum(daily_closes)
+        print(close_sum) 
+
+        volatility_index = (recent_high - recent_low)
+        print(volatility_index)
+
     except KeyError:
         print("\n")
         print("Sorry! It appears " + stock +" doesn't correspond to a company!")
