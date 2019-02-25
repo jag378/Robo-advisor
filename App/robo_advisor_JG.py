@@ -126,14 +126,25 @@ for stock in stocks_list:
         volatility_index = ((recent_high - recent_low)/close_average)*100
         volatility_index_form = two_decimal_format(volatility_index)
         print("*************************************")
-        print(stock + " INVESTMENT RECOMMENDATIONS:")
+        print(stock + " INVESTMENT STATISTICS:")
         print("This company has a volatility index of " + str(volatility_index_form) + "%")
 
         percent_of_delta = ((latest_price - recent_low) / (recent_high - recent_low)) * 100
         percent_of_delta_form = two_decimal_format(percent_of_delta)
         print("This company is trading at " + str(percent_of_delta_form) + "% of the delta between its recent high and recent low")
 
+        #Investment Decision
         
+        if volatility_index < 20 and percent_of_delta < 40:
+            print("This company is a STRONG BUY")
+        elif volatility_index < 35 and percent_of_delta < 55:
+            print("This company is a MODERATE BUY")
+        elif volatility_index < 50 and percent_of_delta < 70:
+            print("This company is a HOLD")
+        elif volatility_index < 75 and percent_of_delta < 85:
+            print("This company is a MODERATE SELL")
+        else:
+            print("This company is a STRONG SELL")
 
 
     except KeyError:
