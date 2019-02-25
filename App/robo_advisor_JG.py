@@ -10,3 +10,7 @@ import csv
 from dotenv import load_dotenv
 
 print("Hello World")
+
+load_dotenv()
+
+my_api = os.environ.get("ALPHAVANTAGE_API_KEY")
