@@ -33,15 +33,19 @@ print(stocks_list)
 #Gather Requests for Webpages
 
 for stock in stocks_list:
+    try:
+        stock_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={stock}&apikey={my_api}"
 
-    stock_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={stock}&apikey={my_api}"
+        response = requests.get(stock_url)
+        parsed_response = json.loads(response.text)
+        print(type(parsed_response))
 
-    response = requests.get(stock_url)
-    parsed_response = json.loads(response.text)
-    print(type(parsed_response))
+        company_data = parsed_response["Meta Data"]
+        print(company_data)
 
-    company_data = parsed_response["Meta Data"]
-    print(company_data)
+    except KeyError:
+        print("\n")
+        print("Sorry! It appears " + stock +" doesn't correspond to a company!")
 
 #Making the Data More User-Friendly
 
