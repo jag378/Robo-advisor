@@ -59,7 +59,6 @@ for stock in stocks_list:
         for date in daily_prices:
             dates.append(date)
 
-        print(dates)
 
         #Pricing Data
 
@@ -75,9 +74,6 @@ for stock in stocks_list:
             }
 
             pricing_data.append(prices)
-
-        print(pricing_data)
-        print(type(pricing_data))
 
         #Save to CSV
 
