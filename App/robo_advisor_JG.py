@@ -91,3 +91,20 @@ def dollar_format(value):
 latest_price = pricing_data[0]["Close"]
 latest_price_form = dollar_format(latest_price)
 print(latest_price_form)
+
+daily_highs = []
+daily_lows = []
+
+for prices in pricing_data:
+    daily_highs.append(prices["High"])
+
+recent_high = max(daily_highs)
+recent_high_form = dollar_format(recent_high)
+print(recent_high_form)    
+
+for prices in pricing_data:
+    daily_lows.append(prices["Low"])
+
+recent_low = min(daily_lows)
+recent_low_form = dollar_format(recent_low)
+print(recent_low_form)
