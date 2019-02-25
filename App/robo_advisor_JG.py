@@ -36,4 +36,6 @@ for stock in stocks_list:
     response = requests.get(stock_url)
     parsed_response = json.loads(response.text)
     print(type(parsed_response))
-    
+
+    company_data = parsed_response["Meta Data"]
+    print(company_data)
