@@ -92,7 +92,7 @@ for stock in stocks_list:
 
         latest_price = pricing_data[0]["Close"]
         latest_price_form = dollar_format(latest_price)
-        print(latest_price_form)
+        print(stock + "'s Most Recent Closing Price: " + latest_price_form)
 
         daily_highs = []
         daily_lows = []
@@ -102,14 +102,14 @@ for stock in stocks_list:
 
         recent_high = max(daily_highs)
         recent_high_form = dollar_format(recent_high)
-        print(recent_high_form)    
+        print(stock + "'s Recent Max High: " + recent_high_form)    
 
         for prices in pricing_data:
             daily_lows.append(prices["Low"])
 
         recent_low = min(daily_lows)
         recent_low_form = dollar_format(recent_low)
-        print(recent_low_form)
+        print(stock + "'s Recent Min Low: " + recent_low_form)
 
     except KeyError:
         print("\n")
