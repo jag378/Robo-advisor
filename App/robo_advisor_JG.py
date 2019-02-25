@@ -33,6 +33,9 @@ print(stocks_list)
 def dollar_format(value):
     return "${0:,.2f}".format(value)
 
+def two_decimal_format(value):
+    return "{0:.2f}".format(value)
+
 #Gather Requests for Webpages
 
 for stock in stocks_list:
@@ -117,10 +120,21 @@ for stock in stocks_list:
         for prices in pricing_data:
             daily_closes.append(prices["Close"])
         close_sum = sum(daily_closes)
-        print(close_sum) 
+        close_average = close_sum/len(daily_closes)
+        
 
-        volatility_index = (recent_high - recent_low)
-        print(volatility_index)
+        volatility_index = ((recent_high - recent_low)/close_average)*100
+        volatility_index_form = two_decimal_format(volatility_index)
+        print("*************************************")
+        print(stock + " INVESTMENT RECOMMENDATIONS:")
+        print("This company has a volatility index of " + str(volatility_index_form) + "%")
+
+        percent_of_delta = ((latest_price - recent_low) / (recent_high - recent_low)) * 100
+        percent_of_delta_form = two_decimal_format(percent_of_delta)
+        print("This company is trading at " + str(percent_of_delta_form) + "% of the delta between its recent high and recent low")
+
+        
+
 
     except KeyError:
         print("\n")
