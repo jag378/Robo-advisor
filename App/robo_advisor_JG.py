@@ -80,7 +80,7 @@ for stock in stocks_list:
 
         #Save to CSV
 
-        csv_filepath = os.path.join(os.path.dirname(__file__), "..", "data", "prices.csv")
+        csv_filepath = os.path.join(os.path.dirname(__file__), "..", "data", stock + "_prices.csv")
         csv_headers = ["Time", "Open", "High", "Low", "Close", "Volume"]
 
         with open(csv_filepath, "w") as csv_file:
