@@ -26,3 +26,14 @@ while stocks_counted < number_of_stocks:
     stocks_list.append(stock_ticker)
 
 print(stocks_list)
+
+#Gather Requests for Webpages
+
+for stock in stocks_list:
+
+    stock_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={stock}&apikey={my_api}"
+
+    response = requests.get(stock_url)
+    parsed_response = json.loads(response.text)
+    print(type(parsed_response))
+    
