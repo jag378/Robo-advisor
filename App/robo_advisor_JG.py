@@ -45,3 +45,12 @@ for stock in stocks_list:
 daily_prices = parsed_response["Time Series (Daily)"]
 print(daily_prices)
 print(type(daily_prices))
+
+#Dates Analysis
+
+dates = []
+
+for date in daily_prices:
+    dates.append(date)
+
+print(dates)
