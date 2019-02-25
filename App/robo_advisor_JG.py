@@ -82,3 +82,12 @@ with open(csv_filepath, "w") as csv_file:
     writer.writeheader()
     for prices in pricing_data:
         writer.writerow(prices)
+
+#Printing Calculations
+
+def dollar_format(value):
+    return "${0:,.2f}".format(value)
+
+latest_price = pricing_data[0]["Close"]
+latest_price_form = dollar_format(latest_price)
+print(latest_price_form)
