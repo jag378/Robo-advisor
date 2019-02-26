@@ -6,7 +6,7 @@ import requests
 import csv
 import datetime
 import re #https://stackoverflow.com/questions/8761778/limiting-python-input-strings-to-certain-characters-and-lengths
-
+import matplotlib.pyplot as mpl
 
 #pip install python-dotenv through the command prompt
 from dotenv import load_dotenv
@@ -27,7 +27,6 @@ def has_numbers(my_input):
 while stocks_counted < number_of_stocks:
     stock_ticker = input("Please input a public company's stock ticker here: ")
     result = has_numbers(stock_ticker)
-    print(result)
 
     if len(stock_ticker) > 4 or result == True:
         print("Oops! That isn't a valid stock symbol. Please input the stock's 3-4 digit ticker next time")
@@ -176,7 +175,18 @@ for stock in stocks_list:
 
         # Challenge 1: has been completed, as multiple inputs are already allowed
 
-        # Challenge 2
+        # Charts Challenge:
+
+        daily_closes.reverse()
+
+        mpl.plot(dates, daily_closes)
+        mpl.title(stock + " Recent Performance")
+        mpl.tick_params(
+            axis='x',
+            which='both',
+            bottom=False,
+            top=False)
+        mpl.show()
 
 
     except KeyError:
