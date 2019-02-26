@@ -148,14 +148,19 @@ for stock in stocks_list:
 
         if volatility_index < 20 and percent_of_delta < 40:
             print("This company is a STRONG BUY")
+            print("Because it's not very volatile and is trading very close to its recent low")
         elif volatility_index < 35 and percent_of_delta < 55:
             print("This company is a MODERATE BUY")
+            print("Because it is only relatively volatile and is trading closer to its recent low")
         elif volatility_index < 50 and percent_of_delta < 70:
             print("This company is a HOLD")
+            print("Because it has both average volatility and is trading moderately close to half of its delta")
         elif volatility_index < 75 and percent_of_delta < 85:
             print("This company is a MODERATE SELL")
+            print("Because it is quite volatile and overpriced compared to recent prices")
         else:
             print("This company is a STRONG SELL")
+            print("Because it is extremely volatile and dangerously close to its recent high")
         
         print("\n")
         print("****************************")
