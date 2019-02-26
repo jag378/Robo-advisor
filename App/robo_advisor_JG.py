@@ -28,7 +28,11 @@ while stocks_counted < number_of_stocks:
         stocks_counted = stocks_counted + 1
         stocks_list.append(stock_ticker)
 
-print(stocks_list)
+#Printing Names of All Stocks to be Printed
+print("We will be collecting data on the following company tickers:")
+
+for stock in stocks_list:
+    print(stock)
 
 def dollar_format(value):
     return "${0:,.2f}".format(value)
@@ -44,16 +48,10 @@ for stock in stocks_list:
 
         response = requests.get(stock_url)
         parsed_response = json.loads(response.text)
-        print(type(parsed_response))
-
-        company_data = parsed_response["Meta Data"]
-        print(company_data)
-
 
         #Making the Data More User-Friendly
 
         daily_prices = parsed_response["Time Series (Daily)"]
-        print(type(daily_prices))
 
         #Dates Analysis
 
@@ -91,7 +89,8 @@ for stock in stocks_list:
 
         #Printing Calculations
 
-
+        print("\n")
+        print(stock + "'s VALUES AND CALCULATIONS:")
 
         latest_price = pricing_data[0]["Close"]
         latest_price_form = dollar_format(latest_price)
@@ -113,6 +112,7 @@ for stock in stocks_list:
         recent_low = min(daily_lows)
         recent_low_form = dollar_format(recent_low)
         print(stock + "'s Recent Min Low: " + recent_low_form)
+        print("\n")
 
         #Stock Recommendation Data
 
@@ -125,16 +125,18 @@ for stock in stocks_list:
 
         volatility_index = ((recent_high - recent_low)/close_average)*100
         volatility_index_form = two_decimal_format(volatility_index)
-        print("*************************************")
+
         print(stock + " INVESTMENT STATISTICS:")
         print("This company has a volatility index of " + str(volatility_index_form) + "%")
 
         percent_of_delta = ((latest_price - recent_low) / (recent_high - recent_low)) * 100
         percent_of_delta_form = two_decimal_format(percent_of_delta)
         print("This company is trading at " + str(percent_of_delta_form) + "% of the delta between its recent high and recent low")
+        print("\n")
 
         #Investment Decision
-        
+        print(stock + " COMPANY RECOMMENDATION:")
+
         if volatility_index < 20 and percent_of_delta < 40:
             print("This company is a STRONG BUY")
         elif volatility_index < 35 and percent_of_delta < 55:
@@ -145,6 +147,14 @@ for stock in stocks_list:
             print("This company is a MODERATE SELL")
         else:
             print("This company is a STRONG SELL")
+        
+        print("\n")
+
+    #Further Exploration / Challenges
+
+        # Challenge 1: has been completed, as multiple inputs are already allowed
+
+        # Challenge 2
 
 
     except KeyError:
