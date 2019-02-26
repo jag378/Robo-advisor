@@ -4,7 +4,7 @@ import json
 import os
 import requests
 import csv
-
+import datetime
 
 #pip install python-dotenv through the command prompt
 from dotenv import load_dotenv
@@ -91,6 +91,10 @@ for stock in stocks_list:
 
         #Printing Calculations
 
+        now = datetime.datetime.now()
+
+        print("\n")
+        print("Time of Lookup: " + str(now.strftime("%m/%d/%y %I:%M %p")))
         print("\n")
         print(stock + "'s VALUES AND CALCULATIONS:")
 
