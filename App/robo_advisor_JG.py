@@ -5,11 +5,12 @@ import os
 import requests
 import csv
 import datetime
+import re #https://stackoverflow.com/questions/8761778/limiting-python-input-strings-to-certain-characters-and-lengths
+
 
 #pip install python-dotenv through the command prompt
 from dotenv import load_dotenv
 
-print("Hello World")
 
 load_dotenv()
 
@@ -20,9 +21,15 @@ number_of_stocks = eval(input("How many stocks would you like data on?"))
 stocks_counted = 0
 stocks_list = []
 
+def has_numbers(my_input):
+    return bool(re.search(r'\d', my_input)) #code found at https://stackoverflow.com/questions/38423360/syntax-for-an-if-statement-using-a-boolean
+
 while stocks_counted < number_of_stocks:
     stock_ticker = input("Please input a public company's stock ticker here: ")
-    if len(stock_ticker) > 4:
+    result = has_numbers(stock_ticker)
+    print(result)
+
+    if len(stock_ticker) > 4 or result == True:
         print("Oops! That isn't a valid stock symbol. Please input the stock's 3-4 digit ticker next time")
     else:
         stocks_counted = stocks_counted + 1
