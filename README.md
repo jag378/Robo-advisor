@@ -1,6 +1,9 @@
 # Robo_advisor_JG
 
-Be sure to have installed matplotlib and before running program, run a python install of dotenv in the anaconda prompt
+Be sure to have installed matplotlib.
+
+Also, be sure to have installed dotenv through pip by inputting "pip install python-dotenv" into the anaconda prompt
+
 Please input the ticker symbol for all companies (in capital letters), not the entire company name.
 
 No numbers are allowed in this input
