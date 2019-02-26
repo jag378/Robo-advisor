@@ -29,7 +29,9 @@ while stocks_counted < number_of_stocks:
         stocks_list.append(stock_ticker)
 
 #Printing Names of All Stocks to be Printed
+print("\n")
 print("We will be collecting data on the following company tickers:")
+print("****************************")
 
 for stock in stocks_list:
     print(stock)
@@ -92,6 +94,9 @@ for stock in stocks_list:
         print("\n")
         print(stock + "'s VALUES AND CALCULATIONS:")
 
+        recent_date = pricing_data[0]["Time"]
+        print(stock + "'s Most Recent Closing Date: " + recent_date)
+
         latest_price = pricing_data[0]["Close"]
         latest_price_form = dollar_format(latest_price)
         print(stock + "'s Most Recent Closing Price: " + latest_price_form)
@@ -149,6 +154,7 @@ for stock in stocks_list:
             print("This company is a STRONG SELL")
         
         print("\n")
+        print("****************************")
 
     #Further Exploration / Challenges
 
