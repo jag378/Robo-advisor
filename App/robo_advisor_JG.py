@@ -176,7 +176,7 @@ for stock in stocks_list:
         # Challenge 1: has been completed, as multiple inputs are already allowed
 
         # Charts Challenge:
-
+        print("To continue to program end, be sure to close all windows with graphs")
         daily_closes.reverse()
 
         mpl.plot(dates, daily_closes)
